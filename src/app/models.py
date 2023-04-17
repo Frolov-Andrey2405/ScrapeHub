@@ -42,10 +42,19 @@ class Language(models.Model):
 
 class Job(models.Model):
     url = models.URLField(unique=True)
-    title = models.CharField(max_length=250, verbose_name='Title')
+    title = models.CharField(max_length=250, verbose_name='Job Title ')
     company = models.CharField(max_length=250, verbose_name='Company')
-    description = models.TextField(verbose_name='Description')
+    description = models.TextField(verbose_name='Job Description ')
     city = models.ForeignKey(
         City, on_delete=models.CASCADE, verbose_name='City')
     language = models.ForeignKey(
-        Language, on_delete=models.CASCADE, verbose_name='Language')
+        Language, on_delete=models.CASCADE,
+        verbose_name='Programming Language')
+    time_stamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Job'
+        verbose_name_plural = 'Jobs'
+
+    def __str__(self):
+        return self.title
