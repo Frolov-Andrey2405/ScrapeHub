@@ -38,3 +38,14 @@ class Language(models.Model):
         if not self.slug:
             self.slug = from_cyrillic_to_eng(str(self.name))
         super().save(*args, **kwargs)
+
+
+class Job(models.Model):
+    url = models.URLField(unique=True)
+    title = models.CharField(max_length=250, verbose_name='Title')
+    company = models.CharField(max_length=250, verbose_name='Company')
+    description = models.TextField(verbose_name='Description')
+    city = models.ForeignKey(
+        City, on_delete=models.CASCADE, verbose_name='City')
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, verbose_name='Language')
