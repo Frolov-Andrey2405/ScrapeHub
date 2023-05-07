@@ -15,15 +15,9 @@
 {% endfor %}
 
 <form method="get" action="">
-    <label for="city">City:</label>
-    <input type="text" id="city" name="city"><br>
-
-    <label for="specialty">Specialty:</label>
-    <input type="text" id="specialty" name="specialty"><br>
+    {{form.as_p}}
 
     <input type="submit" value="Submit">
 </form>
-
-
 
 {% endblock %}
