@@ -12,10 +12,18 @@
         <p>{{obj.city.name}} | {{obj.language.name}} | <small>{{obj.time_stamp}}</small></p>
     </div>
 </div>
+
+{% empty %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h3>Sorry, nothing was found for your query</h3>
+    </div>
+</div>
+
 {% endfor %}
 
-<div class="row mx-auto">
-    <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6 mx-auto">
         <form method="get" action="">
 
             <div class="form-group">
