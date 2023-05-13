@@ -5,6 +5,10 @@ from app.utils import from_cyrillic_to_eng
 
 
 class City(models.Model):
+    '''
+    City model represents a settlement with a name and a slug.
+    The slug is automatically generated from the name if not provided.
+    '''
     name = models.CharField(
         max_length=100, verbose_name='Name of the settlement', unique=True)
     slug = models.CharField(max_length=100, blank=True, unique=True)
@@ -23,6 +27,10 @@ class City(models.Model):
 
 
 class Language(models.Model):
+    '''
+    Language model represents a programming language with a name and a slug.
+    The slug is automatically generated from the name if not provided.
+    '''
     name = models.CharField(
         max_length=100, verbose_name='Name of the language', unique=True)
     slug = models.CharField(max_length=100, blank=True, unique=True)
@@ -41,6 +49,10 @@ class Language(models.Model):
 
 
 class Job(models.Model):
+    '''
+    Job model represents a job posting with a URL, title, company, description,
+    city, programming language, and time stamp.
+    '''
     url = models.URLField(unique=True)
     title = models.CharField(max_length=250, verbose_name='Job Title ')
     company = models.CharField(max_length=250, verbose_name='Company')
