@@ -1,5 +1,149 @@
 [
     {
+        "title": "\nData Engineer, Python Developer\n",
+        "href": "https://www.work.ua/jobs/5083884/",
+        "description": "\n            Повна зайнятість. Досвід роботи від 2 років.\n                            Привіт, ми — IT департамент компанії MyCredit. Зараз ми в пошуках колеги, який стане частиною нашої дружньої…⁠\n",
+        "company": "MyCredit"
+    },
+    {
+        "title": "\nМенеджер з управління товарними запасами (SQL, Python)\n",
+        "href": "https://www.work.ua/jobs/5005296/",
+        "description": "\n            Повна зайнятість. Досвід роботи від 1 року.\n                            Давайте знайомитись! Ми успішно розвиваємось з 2002 року. Драйв — наш стиль життя, який народжує натхнення…⁠\n",
+        "company": "Фора, ТОВ"
+    },
+    {
+        "title": "\nSystem Administrator (Linux, Python)\n",
+        "href": "https://www.work.ua/jobs/5063209/",
+        "description": "\n            Повна зайнятість. Досвід роботи від 2 років.\n                            Привіт!   Ми — CHM SOFTWARE — українська IT-компанія, яка є розробником програмного забезпечення для…⁠\n",
+        "company": "CHM software"
+    },
+    {
+        "title": "\nStrong Middle Python developer\n",
+        "href": "https://www.work.ua/jobs/4460554/",
+        "description": "\n            Повна зайнятість. Також готові взяти студента. Досвід роботи від 1 року.\n                            Python developer МИ НА ТЕБЕ ЧЕКАЄМО  (можлива віддалена співпраця) По-перше, СЛАВА УКРАЇНІ!  По-друге,…⁠\n",
+        "company": "Левел99"
+    },
+    {
+        "title": "\nPython-, Java-программист\n",
+        "href": "https://www.work.ua/jobs/4990187/",
+        "description": "\n            Повна зайнятість. Досвід роботи від 1 року.\n                            Вимоги:    Linux — впевнене володіння.   Java — впевнене володіння.    Python — впевнене володіння. …⁠\n",
+        "company": "No name"
+    },
+    {
+        "title": "\nPython-програміст, Backend, Full-stack programmer\n",
+        "href": "https://www.work.ua/jobs/5119859/",
+        "description": "\n            Повна зайнятість. Досвід роботи від 2 років. Вища освіта.\n                            Компанія К2 шукає талановитого Python веб-програміста з великим досвідом роботи для написання веб-додатків…⁠\n",
+        "company": "К2Р, ООО"
+    },
+    {
+        "title": "Senior Data Analyst with Python (AdTech)",
+        "href": "https://jobs.dou.ua/companies/sigma-software/vacancies/235630/",
+        "description": "Ми шукаємо кваліфікованого дата-аналітика з практичним досвідом роботи з мовою Python та досвідом роботи в середовищі Linux. Якщо ти володієш знаннями в галузі статистики та майстерно розробляєш моделі для їх впровадження в додатки — ця можливість саме для тебе.",
+        "company": "Sigma Software"
+    },
+    {
+        "title": "Senior Python developer (Сініор Python розробник)",
+        "href": "https://jobs.dou.ua/companies/techmagic/vacancies/235608/",
+        "description": "We are looking for a talented Senior Python Developer with 4+ years of programming background to build a product from scratch.",
+        "company": "TechMagic"
+    },
+    {
+        "title": "Middle Python Developer",
+        "href": "https://jobs.dou.ua/companies/agileengine/vacancies/235603/",
+        "description": "What you will do\n\n● You will be responsible for building API integrations;\n● Testing your integration;\n● Adding all integrations to our library using the framework established.\n● Proactively work on product & process improvements.",
+        "company": "AgileEngine"
+    },
+    {
+        "title": "Junior Python Developer",
+        "href": "https://jobs.dou.ua/companies/agileengine/vacancies/183251/",
+        "description": "What you will do\n\n● You will be responsible for building API integrations;\n● Testing your integration;\n● Adding all integrations to our library using the framework established.\n● Proactively work on product & process improvements.",
+        "company": "AgileEngine"
+    },
+    {
+        "title": "Data & Machine Learning Engineer (Python)",
+        "href": "https://jobs.dou.ua/companies/softwarium/vacancies/235574/",
+        "description": "Softwarium company develops software for American, Canadian, and Norwegian customers in the educational, medical, energy and security spheres.\n\nOur client — DataGroomr is a rapidly growing technology company specializing in cutting-edge data solutions and machine learning applications.",
+        "company": "Softwarium"
+    },
+    {
+        "title": "Senior Full Stack Engineer (React and Python)",
+        "href": "https://jobs.dou.ua/companies/svitla-systems-inc/vacancies/235480/",
+        "description": "Svitla Systems Inc. is looking for a Senior Full Stack Engineer (React and Python) for a full-time position (40 hours per week) in Ukraine. Our client is an operator of an electric automotive company headquartered in Seattle, Washington.",
+        "company": "Svitla Systems"
+    },
+    {
+        "title": "Python Developer (FullTime\\PartTime)",
+        "href": "https://jobs.dou.ua/companies/exb/vacancies/235469/",
+        "description": "Core product is predicated on optimizing the operation of building HVAC equipment to reduce energy waste and utility costs in multi-family buildings.",
+        "company": "EXB SOFT"
+    },
+    {
+        "title": "Senior Python Engineer",
+        "href": "https://jobs.dou.ua/companies/svitla-systems-inc/vacancies/235437/",
+        "description": "Svitla Systems is a global trusted IT solutions company headquartered in California, with business and development offices throughout the US, Latin America, Europe, and Asia.",
+        "company": "Svitla Systems"
+    },
+    {
+        "title": "Middle Python Developer (230004IM)",
+        "href": "https://jobs.dou.ua/companies/ciklum/vacancies/235419/",
+        "description": "Ciklum is looking for a Middle Python Developer to join our team full-time in Ukraine.",
+        "company": "Ciklum"
+    },
+    {
+        "title": "Middle Python Developer",
+        "href": "https://jobs.dou.ua/companies/autodoc/vacancies/235395/",
+        "description": "We love cars and everything related to them, and we work in e-commerce. In 2008, our team started the business with several dozen parts positions, and today we sell about 3.7 million products for 166 car brands. We are real friends with clients from 27 EU and EEA countries.",
+        "company": "AUTODOC"
+    },
+    {
+        "title": "Strong Junior Python Software Engineer",
+        "href": "https://jobs.dou.ua/companies/evo/vacancies/235385/",
+        "description": "Команда Аукціони.Prom компанії EVO у пошуках Strong Junior Python Software Engineer’a.",
+        "company": "EVO"
+    },
+    {
+        "title": "Middle Python Developer (230004I2)",
+        "href": "https://jobs.dou.ua/companies/ciklum/vacancies/235336/",
+        "description": "Ciklum is looking for a Middle Python Developer to join our team full-time in Ukraine.",
+        "company": "Ciklum"
+    },
+    {
+        "title": "Software Engineer (Python)",
+        "href": "https://jobs.dou.ua/companies/sps-ukraine/vacancies/228695/",
+        "description": "This position will have the opportunity to work with the SPS Engineering teams in Ukraine and the US  What Makes the Job Special?  When you become part of our team, your job won’t only be to “develop code”.",
+        "company": "SPS Ukraine"
+    },
+    {
+        "title": "Senior Python Developer (230004HD)",
+        "href": "https://jobs.dou.ua/companies/ciklum/vacancies/235321/",
+        "description": "Ciklum is looking for a Senior Python Developer to join our team full-time in Ukraine.",
+        "company": "Ciklum"
+    },
+    {
+        "title": "QA Automation Engineer",
+        "href": "https://jobs.dou.ua/companies/plvision/vacancies/230365/",
+        "description": "We are looking for an experienced QA Automation Engineer with in-depth knowledge of Linux OS, excellent Python and Bash skills, and a good understanding of networking protocols.",
+        "company": "PLVision"
+    },
+    {
+        "title": "Middle Python Engineer",
+        "href": "https://jobs.dou.ua/companies/sombra/vacancies/235225/",
+        "description": "About the project: our customer is an investment management firm focused on providing investors with current cash income and long-term capital appreciation through the acquisition, improvement and management of a diversified portfolio of farmland, helps make the right investment...",
+        "company": "Sombra"
+    },
+    {
+        "title": "Python developer",
+        "href": "https://jobs.dou.ua/companies/thewhykingz/vacancies/235208/",
+        "description": "TheWhyKingz, one of the leading entities in IT industry, is seeking a talented Python Developer to join our team.",
+        "company": "The WhyKingz"
+    },
+    {
+        "title": "Junior Python Developer in Test (CSA)",
+        "href": "https://jobs.dou.ua/companies/ajax-systems/vacancies/213097/",
+        "description": "Ми — Ajax Systems, створюємо системи безпеки та пристрої для розумного дому. Хочемо, щоб кожен дім став безпечніший, а охоронні системи — більш технологічними, стильними та простішими у використанні. Віримо в інтернет речей та розумну безпеку як його основу.",
+        "company": "Ajax Systems"
+    },
+    {
         "title": "Middle Backend engineer on the project",
         "href": "/jobs/556350-middle-backend-engineer-on-the-project/",
         "description": "We are Data Science UA and we are a fast growing IT service company. We are proud of developing the Data Science community in Ukraine for more than 6 years. Data Science UA unites all researchers, engineers, and developers around Data Science and related areas. We conduct events on machine learning, computer vision, intelligence, information science, and the use of artificial intelligence for business in various fields.About the client: Artefact is a new generation of a data service provider, specializing in data consulting and data-driven digital marketing, dedicated to transforming data into business impact across the entire value chain of organizations. Our broad range of data-driven solutions in data consulting and digital marketing are designed to meet our clients’ specific needs, always conceived with a business-centric approach and delivered with tangible results. Our data-driven services are built upon the deep AI expertise we’ve acquired with our 1000+ client base around the globe. We have 1000 employees across 20 offices who are focused on accelerating digital transformation.We`re looking for a mid-weight back-end engineer to support the development of our BI dashboard.You will be working with another senior backend engineer and software architect who knows the project well and who will be able to onboard and guide you.Project period (tentative): 22nd of May to 23rd of June (5 weeks)Skills:- Python-OOP- OOSD- Web framework (Flask or FastAPI)- SQL, SQL Alchemy basics- Using debuggers\n      \n\n\n          Детальніше",

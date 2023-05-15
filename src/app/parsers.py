@@ -1,17 +1,27 @@
 import requests
-import json
 from bs4 import BeautifulSoup as bs
+from random import randint
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-}
+headers = [
+    {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    },
+    {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    },
+    {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    }
+]
 
 
 def work_ua(url):
 
     domain = 'https://www.work.ua'
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=headers[randint(0, 2)])
 
     jobs = []
     errors = []
@@ -54,14 +64,11 @@ def work_ua(url):
             'title': "Page doesn't respond",
         })
 
-    json_str = json.dumps(jobs, ensure_ascii=False, indent=4)
-
-    with open('parsing/web/work_ua.json', 'w', encoding='utf-8') as f:
-        f.write(json_str)
+    return jobs, errors
 
 
 def dou_ua(url):
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=headers[randint(0, 2)])
 
     jobs = []
     errors = []
@@ -103,14 +110,11 @@ def dou_ua(url):
             'title': "Page doesn't respond",
         })
 
-    json_str = json.dumps(jobs, ensure_ascii=False, indent=4)
-
-    with open('parsing/web/dou_ua.json', 'w', encoding='utf-8') as f:
-        f.write(json_str)
+    return jobs, errors
 
 
 def djinni_co(url):
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=headers[randint(0, 2)])
 
     jobs = []
     errors = []
@@ -156,12 +160,11 @@ def djinni_co(url):
             'title': "Page doesn't respond",
         })
 
-    json_str = json.dumps(jobs, ensure_ascii=False, indent=4)
+    return jobs, errors
 
-    with open('parsing/web/djinni_co.json', 'w', encoding='utf-8') as f:
-        f.write(json_str)
 
+__all__ = ('work_ua', 'dou_ua', 'djinni_co')
 
 # work_ua('https://www.work.ua/jobs-kyiv-python/')
 # dou_ua('https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D1%97%D0%B2&category=Python')
-djinni_co('https://djinni.co/jobs/?primary_keyword=Python&region=UKR&location=kyiv')
+# djinni_co('https://djinni.co/jobs/?primary_keyword=Python&region=UKR&location=kyiv')
