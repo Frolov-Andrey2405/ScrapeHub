@@ -30,13 +30,13 @@ language = Language.objects.filter(slug='python').first()
 jobs, errors = [], []
 
 for func, url in parsers:
-    j, e = func(url, city=city, language=language)
+    j, e = func(url)
     jobs += j
     errors += e
 
 # Save jobs to the db
 for job in jobs:
-    j = Job(**job)
+    j = Job(**job, city=city, language=language)
     try:
         j.save()
     except DatabaseError:
