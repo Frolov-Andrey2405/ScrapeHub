@@ -10,6 +10,22 @@ django.setup()
 # Import the necessary modules and functions
 from app.parsers import work_ua, dou_ua, djinni_co
 from app.models import City, Language, Job, Error
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
+def get_settings():
+    """
+    The get_settings function returns a set of tuples containing the city_id,
+    language_id for each user who has send_email=True.
+
+    The function is used to determine which users should receive an email.
+    """
+    qs = User.objects.filter(send_email=True).values()
+    settings_lst = set((q['city_id'], q['language_id']) for q in qs)
+
+    return settings_lst
 
 
 def run_scraping():
