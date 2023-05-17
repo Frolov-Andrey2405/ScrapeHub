@@ -124,7 +124,6 @@ def dou_ua(url, city=None, language=None):
 
 
 def djinni_co(url, city=None, language=None):
-
     jobs = []
     errors = []
     domain = 'https://djinni.co'
@@ -152,8 +151,12 @@ def djinni_co(url, city=None, language=None):
 
                     content_div = li.find(
                         'div', attrs={
-                            'class': 'list-jobs__description position-relative'})
+                            'class': 'list-jobs__description position-relative'
+                        })
                     content = content_div.text.strip() if content_div else ''
+
+                    if content.endswith('Детальніше'):
+                        content = content[:content.rfind('Детальніше')].strip()
 
                     jobs.append({
                         'title': title,
@@ -161,7 +164,8 @@ def djinni_co(url, city=None, language=None):
                         'description': content,
                         'company': company,
                         'city_id': city,
-                        'language_id': language})
+                        'language_id': language
+                    })
 
             else:
                 errors.append({
