@@ -1,4 +1,5 @@
 from django.db import models
+import jsonfield
 from app.utils import from_cyrillic_to_eng
 
 # Create your models here.
@@ -70,3 +71,11 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Error(models.Model):
+    time_stamp = models.DateTimeField(auto_now_add=True)
+    data = jsonfield.JSONField()
+
+    def __str__(self):
+        return str(self.time_stamp)

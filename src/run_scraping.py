@@ -9,7 +9,7 @@ django.setup()
 
 # Import the necessary modules and functions
 from app.parsers import work_ua, dou_ua, djinni_co
-from app.models import City, Language, Job
+from app.models import City, Language, Job, Error
 
 
 def run_scraping():
@@ -32,11 +32,23 @@ def run_scraping():
         djinni_co_url, city=None, language=None)
     save_jobs(djinni_co_jobs)
 
+    # Create Error objects for any errors occurred during scraping
+    if work_ua_errors:
+        er = Error(data=work_ua_errors)
+        er.save()
+
+    if dou_ua_errors:
+        er = Error(data=dou_ua_errors)
+        er.save()
+
+    if djinni_co_errors:
+        er = Error(data=djinni_co_errors)
+        er.save()
+
 
 def save_jobs(jobs):
     # Iterate over the scraped jobs and save them in the database
     for job_data in jobs:
-
         # Get or create the City object
         city = City.objects.filter(slug='kiev').first()
 
