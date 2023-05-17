@@ -2,7 +2,9 @@ from django.db import models
 import jsonfield
 from app.utils import from_cyrillic_to_eng
 
-# Create your models here.
+
+def default_urls():
+    return {"work_ua": "", "dou_ua": "", "djinni_co": ""}
 
 
 class City(models.Model):
@@ -79,3 +81,15 @@ class Error(models.Model):
 
     def __str__(self):
         return str(self.time_stamp)
+
+
+class Url(models.Model):
+    city = models.ForeignKey(
+        'City', on_delete=models.CASCADE, verbose_name='City')
+    language = models.ForeignKey(
+        'Language', on_delete=models.CASCADE,
+        verbose_name='Programming Language')
+    url_data = jsonfield.JSONField(default=default_urls)
+
+    class Meta:
+        unique_together = ("city", "language")
