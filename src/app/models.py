@@ -58,9 +58,9 @@ class Job(models.Model):
     company = models.CharField(max_length=250, verbose_name='Company')
     description = models.TextField(verbose_name='Job Description ')
     city = models.ForeignKey(
-        City, on_delete=models.CASCADE, verbose_name='City')
+        'City', on_delete=models.CASCADE, verbose_name='City')
     language = models.ForeignKey(
-        Language, on_delete=models.CASCADE,
+        'Language', on_delete=models.CASCADE,
         verbose_name='Programming Language')
     time_stamp = models.DateTimeField(auto_now_add=True)
 
