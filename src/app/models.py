@@ -76,6 +76,7 @@ class Job(models.Model):
 
 
 class Error(models.Model):
+    '''Error model represents an error occurrence'''
     time_stamp = models.DateTimeField(auto_now_add=True)
     data = jsonfield.JSONField()
 
@@ -84,6 +85,7 @@ class Error(models.Model):
 
 
 class Url(models.Model):
+    '''Model representing a URL.'''
     city = models.ForeignKey(
         'City', on_delete=models.CASCADE, verbose_name='City')
     language = models.ForeignKey(
