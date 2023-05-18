@@ -29,26 +29,25 @@ def get_settings():
 
 
 def run_scraping():
-    # Define the URLs for scraping
+    """
+    The run_scraping function is the main function of this module.
+    It runs all three scraping functions and saves their results to the database.
+    """
     work_ua_url = 'https://www.work.ua/jobs-kyiv-python/'
     dou_ua_url = 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D1%97%D0%B2&category=Python'
     djinni_co_url = 'https://djinni.co/jobs/?primary_keyword=Python&region=UKR&location=kyiv'
 
-    # Scrape data from work.ua
     work_ua_jobs, work_ua_errors = work_ua(
         work_ua_url, city=None, language=None)
     save_jobs(work_ua_jobs)
 
-    # Scrape data from dou.ua
     dou_ua_jobs, dou_ua_errors = dou_ua(dou_ua_url, city=None, language=None)
     save_jobs(dou_ua_jobs)
 
-    # Scrape data from djinni.co
     djinni_co_jobs, djinni_co_errors = djinni_co(
         djinni_co_url, city=None, language=None)
     save_jobs(djinni_co_jobs)
 
-    # Create Error objects for any errors occurred during scraping
     if work_ua_errors:
         er = Error(data=work_ua_errors)
         er.save()
@@ -63,15 +62,19 @@ def run_scraping():
 
 
 def save_jobs(jobs):
-    # Iterate over the scraped jobs and save them in the database
+    """
+    The save_jobs function takes a list of dictionaries as an argument.
+    Each dictionary represents a job posting, and contains the following keys:
+        url - The URL of the job
+        title - The title of the job
+        company - The name of the company offering this position
+        description - A short description about what this position entails
+    """
     for job_data in jobs:
-        # Get or create the City object
         city = City.objects.filter(slug='kiev').first()
 
-        # Get or create the Language object
         language = Language.objects.filter(slug='python').first()
 
-        # Create the Job object and save it
         Job.objects.create(
             url=job_data['url'],
             title=job_data['title'],
