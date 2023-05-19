@@ -70,6 +70,7 @@ class Job(models.Model):
     class Meta:
         verbose_name = 'Job'
         verbose_name_plural = 'Jobs'
+        ordering = ['-time_stamp']
 
     def __str__(self):
         return self.title
