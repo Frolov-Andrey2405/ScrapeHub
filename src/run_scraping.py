@@ -17,92 +17,108 @@ User = get_user_model()
 
 def get_settings():
     """
-    The get_settings function returns a set of tuples containing the city_id,
-    language_id for each user who has send_email=True.
+    The get_settings function returns a set of tuples containing the city_id
+    and language_id for each user who has opted in to receive emails.
 
-    The function is used to determine which users should receive an email.
+    The function is called by the send_email function,
+    which uses it to determine which users should receive an email.
+
     """
     qs = User.objects.filter(send_email=True).values()
-    settings_lst = set((q['city_id'], q['language_id']) for q in qs)
-
+    settings_lst = {(q['city_id'], q['language_id']) for q in qs}
     return settings_lst
 
 
-def get_urls(_settings):
-    qs = Url.objects.all().values()
-    url_dct = {(q['city_id'], q['language_id']): q['url_data'] for q in qs}
+def get_urls(settings):
+    """
+    The get_urls function takes a list of tuples as an argument.
+
+    The first element in each tuple is the city_id and
+    the second element is the language_id.
+
+    It then queries Url objects for all cities and
+    languages specified in settings, returning a list of
+    dictionaries with keys: 'city', 'language', and 'url_data'.
+    """
+    url_data = Url.objects.filter(
+        city_id__in=[city_id for city_id, _ in settings],
+        language_id__in=[language_id for _, language_id in settings]
+    ).values()
     urls = []
 
-    for pair in _settings:
-        tmp = {}
-        tmp['city'] = pair[0]
-        tmp['language'] = pair[1]
-        tmp['url_data'] = url_dct[pair]
+    for data in url_data:
+        tmp = {
+            'city': data['city_id'],
+            'language': data['language_id'],
+            'url_data': data['url_data']
+        }
         urls.append(tmp)
 
     return urls
 
 
-q = get_settings()
-u = get_urls(q)
-
-
-def run_scraping():
+class JobSaver:
     """
-    The run_scraping function is the main function of this module.
-    It runs all three scraping functions and saves their results to the database.
+    The JobSaver class is responsible for saving scraped jobs into the database
+    """ 
+    @staticmethod
+    def save_jobs(jobs):
+        """
+        The save_jobs function iterates over the scraped jobs,
+        saves them in the database.
+
+        It gets or creates a City object, a Language object,
+        and then creates a Job object with those two objects as foreign keys.
+        """
+        # Iterate over the scraped jobs and save them in the database
+        for job_data in jobs:
+            # Get or create the City object
+            city, _ = City.objects.get_or_create(slug='kiev')
+
+            # Get or create the Language object
+            language, _ = Language.objects.get_or_create(slug='python')
+
+            # Create the Job object and save it
+            Job.objects.get_or_create(
+                url=job_data['url'],
+                title=job_data['title'],
+                company=job_data['company'],
+                description=job_data['description'],
+                city=city,
+                language=language
+            )
+
+
+def main():
     """
-    work_ua_url = 'https://www.work.ua/jobs-kyiv-python/'
-    dou_ua_url = 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D1%97%D0%B2&category=Python'
-    djinni_co_url = 'https://djinni.co/jobs/?primary_keyword=Python&region=UKR&location=kyiv'
+    The main function is the entry point of the program.
 
-    work_ua_jobs, work_ua_errors = work_ua(
-        work_ua_url, city=None, language=None)
-    save_jobs(work_ua_jobs)
-
-    dou_ua_jobs, dou_ua_errors = dou_ua(dou_ua_url, city=None, language=None)
-    save_jobs(dou_ua_jobs)
-
-    djinni_co_jobs, djinni_co_errors = djinni_co(
-        djinni_co_url, city=None, language=None)
-    save_jobs(djinni_co_jobs)
-
-    if work_ua_errors:
-        er = Error(data=work_ua_errors)
-        er.save()
-
-    if dou_ua_errors:
-        er = Error(data=dou_ua_errors)
-        er.save()
-
-    if djinni_co_errors:
-        er = Error(data=djinni_co_errors)
-        er.save()
-
-
-def save_jobs(jobs):
+    It calls all other functions in order to parse,
+    save jobs from different websites.
     """
-    The save_jobs function takes a list of dictionaries as an argument.
-    Each dictionary represents a job posting, and contains the following keys:
-        url - The URL of the job
-        title - The title of the job
-        company - The name of the company offering this position
-        description - A short description about what this position entails
-    """
-    for job_data in jobs:
-        city = City.objects.filter(slug='kiev').first()
+    settings = get_settings()
+    url_lst = get_urls(settings)
 
-        language = Language.objects.filter(slug='python').first()
+    parsers = [
+        (work_ua, 'work_ua'),
+        (dou_ua, 'dou_ua'),
+        (djinni_co, 'djinni_co'),
+    ]
 
-        Job.objects.create(
-            url=job_data['url'],
-            title=job_data['title'],
-            company=job_data['company'],
-            description=job_data['description'],
-            city=city,
-            language=language
-        )
+    job_saver = JobSaver()
+
+    for url_data in url_lst:
+        for parser, parser_name in parsers:
+            # Extract the URL from the dictionary
+            url = url_data['url_data'].get(parser_name)
+            if url:
+                jobs, errors = parser(
+                    url, city=url_data['city'], language=url_data['language'])
+                job_saver.save_jobs(jobs)
+
+                if errors:
+                    er = Error.objects.create(data=errors)
 
 
-# Run the scraping and database storage
-run_scraping()
+if __name__ == "__main__":
+    main()
