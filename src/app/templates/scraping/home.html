@@ -3,29 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% for obj in object_list %}
-
-<div class="card my-3">
-    <h5 class="card-header"><a href="{{obj.url}}">{{obj.title}}</a></h5>
-    <div class="card-body">
-        <h4>{{obj.company}}</h4>
-        <p class="card-text">{{obj.description}}</p>
-        <p>{{obj.city.name}} | {{obj.language.name}} | <small>{{obj.time_stamp}}</small></p>
-    </div>
-</div>
-
-{% empty %}
 <div class="row">
-    <div class="col-md-6 mx-auto">
-        <h3>Sorry, nothing was found for your query</h3>
-    </div>
+    <div class="col"><h2>Service for collecting and mailing vacancies</h2></div>
 </div>
-
-{% endfor %}
 
 <div class="row">
     <div class="col-md-6 mx-auto">
-        <form method="get" action="">
+        <h4>To view available positions, fill out the form on one of the fields</h4>
+        <form method="get" action="{% url 'list' %}">
 
             <div class="form-group">
                 {{form.as_p}}
