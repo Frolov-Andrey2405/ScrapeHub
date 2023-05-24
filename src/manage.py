@@ -5,7 +5,10 @@ import sys
 
 
 def main():
-    """Run administrative tasks."""
+    """
+    The main function is the entry point for the program.
+    It initializes Django and then calls execute_from_command_line() to run a command line utility that will call manage.py with arguments passed in from sys.argv[].
+    """
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scraping_service.settings')
     try:
         from django.core.management import execute_from_command_line
