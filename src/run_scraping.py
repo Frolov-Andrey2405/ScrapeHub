@@ -60,7 +60,7 @@ def get_urls(settings):
 class JobSaver:
     """
     The JobSaver class is responsible for saving scraped jobs into the database
-    """ 
+    """
     @staticmethod
     def save_jobs(jobs):
         """
